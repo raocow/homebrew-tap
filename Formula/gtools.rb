@@ -1,4 +1,4 @@
-class GitTools < Formula
+class Gtools < Formula
   desc "Personal custom git subcommands: sweep, sync, pr, done"
   homepage "https://github.com/alexrao2000/git-tools"
   url "https://github.com/alexrao2000/git-tools/archive/refs/tags/v0.1.0.tar.gz"

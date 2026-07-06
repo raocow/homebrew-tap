@@ -3,7 +3,7 @@
 Homebrew tap for [alexrao2000/git-tools](https://github.com/alexrao2000/git-tools).
 
 ```bash
-brew install alexrao2000/tap/git-tools
+brew install gtools
 ```
 
 This installs the `git sweep`, `git sync`, `git pr`, and `git done` subcommands.
