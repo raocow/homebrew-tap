@@ -1,12 +1,26 @@
 #!/usr/bin/env bash
-#:  `raocow`
+#:  `raocow` — what's in raocow/tap, and why it exists
 #:
-#:  Summarize the raocow/tap Homebrew tap: every formula with its one-line
-#:  description, the latest version in the tap vs. what you have installed,
-#:  and a hint if an upgrade is available.
+#:  A personal Homebrew tap: a few small tools I install on a fresh Mac to
+#:  speed up my dev cycle. None of it is essential — they're shortcuts I
+#:  trust and reach for every day, packaged so a new machine is one
+#:  `brew install` away from feeling like home.
+#:
+#:  The tools:
+#:
+#:    gtools   Custom `git` subcommands for a PR-based team workflow.
+#:             `git sweep` clears merged branches (quicker than asking an
+#:             LLM to); `git pr` / `git here` / `git done` check out, test,
+#:             and tear down a coworker's PR; `git sync` rebases + pushes.
+#:             Great if you work on a team; less useful solo without PRs.
+#:
+#:    ezenv    Opt-in zsh environment helpers for a fresh Mac. Per-repo
+#:             `.venv` auto-activation and bare python/pip -> python3/pip3,
+#:             each enabled a la carte with one command — no dotfile
+#:             spelunking, and nothing turns on until you ask for it.
 #:
 #:  Usage:
-#:    brew raocow              list all formulae in the tap
+#:    brew raocow              list each formula with version + install state
 #:    brew raocow --help       show this help
 #:
 #:  Related built-ins:
@@ -39,8 +53,8 @@ installed_version() {  # highest version dir in the Cellar, empty if none
   printf '%s\n' "${dirs[@]}" | xargs -n1 basename | sort -V | tail -1
 }
 
-echo "raocow/tap — personal Homebrew tap"
-echo "${#formulae[@]} formulae · $repo"
+echo "raocow/tap — a few small tools to make a fresh Mac feel like home"
+echo "${#formulae[@]} formulae · $repo · full purpose: brew raocow --help"
 echo
 
 pad=6
