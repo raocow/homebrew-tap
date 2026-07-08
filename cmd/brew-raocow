@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+#:  `raocow`
+#:
+#:  Summarize the raocow/tap Homebrew tap: every formula with its one-line
+#:  description, the latest version in the tap vs. what you have installed,
+#:  and a hint if an upgrade is available.
+#:
+#:  Usage:
+#:    brew raocow              list all formulae in the tap
+#:    brew raocow --help       show this help
+#:
+#:  Related built-ins:
+#:    brew tap-info raocow/tap   tap metadata (formula count, git remote)
+#:    brew desc FORMULA          one-line description of a formula
+#:    brew info FORMULA          full details, dependencies, caveats
+#:    brew upgrade FORMULA       pull the latest release from the tap
+set -euo pipefail
+
+# Everything below reads files and Homebrew's own env vars — no `brew`
+# subprocess (each would cost ~0.5s of Ruby startup + formula loading).
+repo="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cellar="${HOMEBREW_CELLAR:-${HOMEBREW_PREFIX:-/opt/homebrew}/Cellar}"
+
+shopt -s nullglob
+formulae=("$repo"/Formula/*.rb)
+
+field() {  # field <regex-capturing-value> <file>
+  sed -n "s/^[[:space:]]*$1/\1/p" "$2" | head -1
+}
+tap_version() {  # explicit `version "..."`, else the vX.Y.Z tag in `url`
+  local f="$1" v
+  v="$(field 'version "\(.*\)"' "$f")"
+  [ -n "$v" ] || v="$(sed -n 's#.*/tags/v\{0,1\}\([0-9][^"/]*\)\.tar\.gz.*#\1#p' "$f" | head -1)"
+  echo "$v"
+}
+installed_version() {  # highest version dir in the Cellar, empty if none
+  local dirs=("$cellar/$1"/*/)
+  [ ${#dirs[@]} -gt 0 ] || return 0
+  printf '%s\n' "${dirs[@]}" | xargs -n1 basename | sort -V | tail -1
+}
+
+echo "raocow/tap — personal Homebrew tap"
+echo "${#formulae[@]} formulae · $repo"
+echo
+
+pad=6
+for f in "${formulae[@]}"; do n="$(basename "$f" .rb)"; [ "${#n}" -gt "$pad" ] && pad="${#n}"; done
+
+for f in "${formulae[@]}"; do
+  name="$(basename "$f" .rb)"
+  desc="$(field 'desc "\(.*\)"' "$f")"
+  home="$(field 'homepage "\(.*\)"' "$f")"
+  latest="$(tap_version "$f")"
+  inst="$(installed_version "$name")"
+
+  if [ -z "$inst" ]; then
+    state="not installed — latest $latest"
+  elif [ -n "$latest" ] && [ "$inst" != "$latest" ] \
+       && [ "$(printf '%s\n%s\n' "$inst" "$latest" | sort -V | tail -1)" = "$latest" ]; then
+    state="installed $inst — upgrade to $latest available"
+  else
+    state="installed $inst (current)"
+  fi
+
+  printf '  %-*s  %s\n' "$pad" "$name" "${desc:-(no description)}"
+  printf '  %-*s  %s\n'   "$pad" "" "$state"
+  [ -n "$home" ] && printf '  %-*s  %s\n' "$pad" "" "$home"
+  echo
+done
+
+echo "Install:  brew install <formula>      Upgrade:  brew upgrade <formula>"
+echo "Details:  brew info <formula>          Docs:     brew raocow --help"
