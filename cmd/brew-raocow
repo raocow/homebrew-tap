@@ -73,7 +73,7 @@ for f in "${formulae[@]}"; do
   fi
 
   echo "  $name — $state"
-  [ -n "$home" ] && echo "  $(printf '%*s' "${#name}" '')   $home"
+  [ -n "$home" ] && echo "      $home"
   blurb="$(purpose "$name")"; [ -n "$blurb" ] || blurb="$(field 'desc "\(.*\)"' "$f")"
   echo "$blurb" | sed 's/^/      /'
   echo
