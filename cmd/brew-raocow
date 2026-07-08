@@ -37,8 +37,9 @@ purpose() {
   case "$1" in
     gtools) cat <<'P'
 Custom git subcommands for a PR-based team workflow. git sweep clears merged
-branches (quicker than asking an LLM to); git pr / git here / git done check
-out, test, and tear down a coworker's PR; git sync rebases and pushes.
+branches (quicker than asking an LLM to); git pr / git done check out and
+tear down a coworker's PR (git pr also switches to branches you
+already have, offline); git sync rebases and pushes.
 Per-command help: git <cmd> -h  (or the man page: git <cmd> --help)
 P
     ;;
