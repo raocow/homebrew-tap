@@ -1,8 +1,8 @@
 class Ezenv < Formula
   desc "Opt-in shell env helpers: per-repo venv auto-activation and python/pip fallback"
   homepage "https://github.com/raocow/ezenv"
-  url "https://github.com/raocow/ezenv/archive/refs/tags/v0.1.2.tar.gz"
-  sha256 "41a70ba7628c70eab9798c50f642fd4c0d594c2f7b78c55a07184243cf54772c"
+  url "https://github.com/raocow/ezenv/archive/refs/tags/v0.1.3.tar.gz"
+  sha256 "ad73516697a7f4caa46d6c8d9c15959c8141828a92d7b77230cd6bab55f75d14"
   license "MIT"
   head "https://github.com/raocow/ezenv.git", branch: "master"
 
@@ -16,12 +16,12 @@ class Ezenv < Formula
     <<~EOS
       ezenv features are opt-in. Enable the ones you want, then restart your shell:
 
-        ezenv install autovenv       # per-repo .venv auto-activation
-        ezenv install py-fallback    # bare python/pip -> python3/pip3
-        ezenv install                # everything
+        ezenv enable autovenv        # per-repo .venv auto-activation
+        ezenv enable pyf             # bare python/pip -> python3/pip3
+        ezenv enable                 # everything
         exec zsh
 
-      `ezenv status` shows what's enabled; `ezenv uninstall <feature>` removes it.
+      `ezenv status` shows what's enabled; `ezenv disable <feature>` turns one off.
     EOS
   end
 
