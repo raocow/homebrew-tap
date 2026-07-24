@@ -1,8 +1,8 @@
-class Gtools < Formula
+class Gitplus < Formula
   desc "Personal custom git subcommands: sweep, sync, pr, done"
-  homepage "https://github.com/raocow/gtools"
-  url "https://github.com/raocow/gtools/archive/refs/tags/v0.10.12.tar.gz"
-  sha256 "da260958f6957eeb86b63c3754c5ea88d69c3d28f9e6a0db15a6fd009e4c3b59"
+  homepage "https://github.com/raocow/gitplus"
+  url "https://github.com/raocow/gitplus/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "926eef145bf8061a04098f846d63ada1531977cc2a992307edb86a0aef64f682"
 
   # `git pr` shells out to the GitHub CLI; the other commands don't need it.
   depends_on "gh"
@@ -10,7 +10,7 @@ class Gtools < Formula
   def install
     bin.install Dir["bin/git-*"]
     man1.install Dir["man/git-*.1"]
-    lib.install "lib/git-tools-common.sh" if File.exist?("lib/git-tools-common.sh")
+    lib.install "lib/gitplus-common.sh" if File.exist?("lib/gitplus-common.sh")
     zsh_completion.install Dir["share/zsh/site-functions/*"] if
       Dir.exist?("share/zsh/site-functions")
   end
