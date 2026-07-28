@@ -1,8 +1,8 @@
 class Devrig < Formula
   desc "Opt-in dev environment helpers: venv, python/pip fallback, git accounts"
   homepage "https://github.com/raocow/devrig"
-  url "https://github.com/raocow/devrig/archive/refs/tags/v0.4.0.tar.gz"
-  sha256 "6eed8f7cb3616291635d080f62aa310f6c092333d8a30ea0e1c6c482328e6b79"
+  url "https://github.com/raocow/devrig/archive/refs/tags/v0.5.0.tar.gz"
+  sha256 "c605fb5489a516083af54c2f066372668d8d3b5aec68eb2d7da57dace0bf77b1"
   license "MIT"
   head "https://github.com/raocow/devrig.git", branch: "master"
 
@@ -23,8 +23,13 @@ class Devrig < Formula
 
       `devrig status` shows what's enabled; `devrig disable <feature>` turns one off.
 
-      New in this release: `devrig account` ties a directory to a separate git/ssh
-      account (e.g. work vs personal). See the README for details.
+      `devrig account` ties a directory to a separate git/ssh account (e.g. work
+      vs personal). New in this release: `account add --gh-user <username>` also
+      pairs it with a `gh` CLI login, and `devrig enable ghswitch` keeps gh's
+      active account correct automatically as you cd between them — gh's active
+      account is shared by every terminal on the machine, so anything else using
+      a different identity anywhere can silently flip it back otherwise. See the
+      README for details.
     EOS
   end
 
