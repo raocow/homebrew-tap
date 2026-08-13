@@ -1,8 +1,8 @@
 class Gitplus < Formula
   desc "Personal custom git subcommands: sweep, sync, pr, done"
   homepage "https://github.com/raocow/gitplus"
-  url "https://github.com/raocow/gitplus/archive/refs/tags/v1.5.2.tar.gz"
-  sha256 "23ba8186264ce3ed001d9f8e0f3aa5456891477acc097068811ec47a32401f46"
+  url "https://github.com/raocow/gitplus/archive/refs/tags/v1.5.3.tar.gz"
+  sha256 "e132a5ca85a237523663eeeb1b1db3d863795a0b7a6a8f897b4f3e184dcb832e"
 
   # `git pr` shells out to the GitHub CLI; the other commands don't need it.
   depends_on "gh"
