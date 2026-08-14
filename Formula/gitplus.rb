@@ -1,8 +1,8 @@
 class Gitplus < Formula
   desc "Personal custom git subcommands: sweep, sync, pr, done"
   homepage "https://github.com/raocow/gitplus"
-  url "https://github.com/raocow/gitplus/archive/refs/tags/v1.5.3.tar.gz"
-  sha256 "e132a5ca85a237523663eeeb1b1db3d863795a0b7a6a8f897b4f3e184dcb832e"
+  url "https://github.com/raocow/gitplus/archive/refs/tags/v1.6.0.tar.gz"
+  sha256 "320895d1371c74b065ee39f02dafd49f71e829c3a883ea3beaf931a7b61e7345"
 
   # `git pr` shells out to the GitHub CLI; the other commands don't need it.
   depends_on "gh"
@@ -13,6 +13,7 @@ class Gitplus < Formula
     lib.install "lib/gitplus-common.sh" if File.exist?("lib/gitplus-common.sh")
     zsh_completion.install Dir["share/zsh/site-functions/*"] if
       Dir.exist?("share/zsh/site-functions")
+    (share/"gitplus").install "share/zsh/ghswitch.zsh" if File.exist?("share/zsh/ghswitch.zsh")
   end
 
   def caveats
@@ -29,6 +30,15 @@ class Gitplus < Formula
         typeset -U fpath
         fpath=(/usr/share/zsh/${ZSH_VERSION}/functions /usr/share/zsh/site-functions $fpath)
         autoload -Uz compinit && compinit
+
+      Optional, for 'git account': keep gh's identity matched to whichever
+      directory your shell is in, per shell, instead of gh's machine-wide
+      active account (which any other terminal or agent can change under you):
+
+        source "#{opt_share}/gitplus/ghswitch.zsh"
+
+      The git-* commands resolve the right account themselves either way —
+      this only affects bare 'gh' commands you type by hand.
     EOS
   end
 

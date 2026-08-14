@@ -1,8 +1,8 @@
 class Devrig < Formula
-  desc "Opt-in dev environment helpers: venv, python/pip fallback, git accounts"
+  desc "Opt-in shell environment helpers: venv, python/pip fallback, dotenv, sleep"
   homepage "https://github.com/raocow/devrig"
-  url "https://github.com/raocow/devrig/archive/refs/tags/v0.6.0.tar.gz"
-  sha256 "46e1035d91754e066151cf56b972c43c0e0ad49b0526c2ceed5ab0546eefc9b5"
+  url "https://github.com/raocow/devrig/archive/refs/tags/v0.7.1.tar.gz"
+  sha256 "22ae1c77d1407a0c3685d53fe39b96859cce911235954a99d5178634238a9f1a"
   license "MIT"
   head "https://github.com/raocow/devrig.git", branch: "master"
 
