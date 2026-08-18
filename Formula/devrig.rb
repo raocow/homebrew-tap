@@ -23,13 +23,7 @@ class Devrig < Formula
 
       `devrig status` shows what's enabled; `devrig disable <feature>` turns one off.
 
-      `devrig account` ties a directory to a separate git/ssh account (e.g. work
-      vs personal). New in this release: `account add --gh-user <username>` also
-      pairs it with a `gh` CLI login, and `devrig enable ghswitch` keeps gh's
-      active account correct automatically as you cd between them — gh's active
-      account is shared by every terminal on the machine, so anything else using
-      a different identity anywhere can silently flip it back otherwise. See the
-      README for details.
+      Per-directory git/ssh/GitHub accounts moved to gitplus — see `gp account`.
     EOS
   end
 
