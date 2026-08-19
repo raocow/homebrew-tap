@@ -1,8 +1,8 @@
 class Gitplus < Formula
   desc "Personal git tooling under the gp command: sweep, sync, pr, done"
   homepage "https://github.com/raocow/gitplus"
-  url "https://github.com/raocow/gitplus/archive/refs/tags/v2.0.0.tar.gz"
-  sha256 "7df772124dd7efc253644cea1103102099119311cd40c090ff790787c1924177"
+  url "https://github.com/raocow/gitplus/archive/refs/tags/v2.1.0.tar.gz"
+  sha256 "c57ed8783b6ebea0918faef3d6bf867e5392e9bd3d10c7672820b438c3518a12"
 
   # `gp pr` shells out to the GitHub CLI; the other commands don't need it.
   depends_on "gh"
