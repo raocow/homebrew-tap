@@ -1,8 +1,8 @@
 class Rigor < Formula
   desc "Opt-in shell environment helpers: venv, python/pip fallback, dotenv, sleep, push"
   homepage "https://github.com/raocow/rigor"
-  url "https://github.com/raocow/rigor/archive/refs/tags/v0.8.0.tar.gz"
-  sha256 "261b0ce964d4d58bfe06b640c43277763bdeb5d702f7fe6d54bd95db33aee7f3"
+  url "https://github.com/raocow/rigor/archive/refs/tags/v0.9.0.tar.gz"
+  sha256 "b7fc761d928c58d7ce220380c48014efce9f15bab519b001961de9624519958f"
   license "MIT"
   head "https://github.com/raocow/rigor.git", branch: "master"
 
