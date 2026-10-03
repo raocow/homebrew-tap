@@ -4,8 +4,11 @@ class Gitplus < Formula
   url "https://github.com/raocow/gitplus/archive/refs/tags/v2.3.0.tar.gz"
   sha256 "c3dd234b3ef01de3627743b720322b4a08d08dfab32cb3e2afcbe774c65a4ac2"
 
+  deprecate! date: "2026-10-02", because: "has been merged into gowork: brew install raocow/tap/gowork"
+
   # `gp pr` shells out to the GitHub CLI; the other commands don't need it.
   depends_on "gh"
+  conflicts_with "gowork", because: "gowork includes gitplus"
 
   def install
     bin.install "bin/gp"

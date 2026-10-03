@@ -6,6 +6,9 @@ class Rigor < Formula
   license "MIT"
   head "https://github.com/raocow/rigor.git", branch: "master"
 
+  deprecate! date: "2026-10-02", because: "has been merged into gowork: brew install raocow/tap/gowork"
+  conflicts_with "gowork", because: "gowork includes rigor"
+
   def install
     bin.install "bin/rigor"
     (share/"rigor").install Dir["share/rigor/*.zsh"]
