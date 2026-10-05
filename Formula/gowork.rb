@@ -1,8 +1,8 @@
 class Gowork < Formula
   desc "Git + GitHub PR workflow, per-directory identity, and dev-shell setup (gw)"
   homepage "https://github.com/raocow/gowork"
-  url "https://github.com/raocow/gowork/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "8745de98c5e45f66e9e78c6f4559fa33127f5282801ab3bf63d844aaf7815cb5"
+  url "https://github.com/raocow/gowork/archive/refs/tags/v1.1.0.tar.gz"
+  sha256 "4b819afd8eb0904c5996c6e273b985fddac7c92cecb5cc4bc913690373e51725"
   license "MIT"
   head "https://github.com/raocow/gowork.git", branch: "main"
 
